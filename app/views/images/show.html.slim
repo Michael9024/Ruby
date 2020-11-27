@@ -1,0 +1,49 @@
+= page_header 'Image Details'
+
+table.table.table-bordered
+  tr
+    th ID
+    th User
+    th Filename
+    th Created at
+    th Updated at
+    th Property ID
+    th Source URL
+  tr
+    td= @image.id
+    td= @image.user
+    td= @image.filename
+    td= @image.created_at
+    td= @image.updated_at
+    td= @image.property_id
+    td= link_to(@image.source_url, @image.source_url, target: '_blank')
+
+- if @image.property
+  h2 Property
+  table.table.table-bordered
+    tr
+      th ID
+      th Resort
+      th Name
+      th Created at
+      th Updated at
+    tr
+      td= @image.property.id
+      td= @image.property.resort
+      td= link_to(@image.property.name, property_path(@image.property))
+      td= @image.property.created_at
+      td= @image.property.updated_at
+
+  - if @image.property.interhome_accommodation
+    h2 Interhome Accommodation
+    table.table.table-bordered
+      tr
+        th ID
+        th Code
+        th Created at
+        th Updated at
+      tr
+        td= @image.property.interhome_accommodation.id
+        td= link_to(@image.property.interhome_accommodation.code, interhome_property_path(@image.property.interhome_accommodation.permalink))
+        td= @image.property.interhome_accommodation.created_at
+        td= @image.property.interhome_accommodation.updated_at

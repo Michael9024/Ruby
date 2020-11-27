@@ -1,0 +1,15 @@
+<%= form_tag({controller: 'properties', action: 'quick_search'}, method: 'get', class: 'search-form') do %>
+  <input type="hidden" name="resort_slug" value="<%= @resort.slug %>">
+  <div class="search-field">
+    <%= render 'properties/sleeps_select' %>
+  </div>
+  <div class="search-field">  
+    <%= render 'properties/price_range_select' %>
+  </div>
+  <div class="search-field">
+    <%= render 'home/date_range_picker', start_date: '', end_date: '' %>
+  </div>
+  <div class="search-field search-field-submit">
+    <input type="submit" value="Search" class="button action-button form-control">
+  </div>
+<% end %>

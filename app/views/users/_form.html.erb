@@ -1,0 +1,216 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= t('please_correct') %>:</h2>
+
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @user, html: { multipart: true } do |f| %>
+<%= f.hidden_field :role_id %>
+<div class="well">
+  <legend>
+    <%= t('users.your_details') %>
+  </legend>
+  <div class="form-group">
+    <%= f.label :first_name, t('first_name') %> <%= required_field %>
+    <%= f.text_field :first_name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :last_name, t('last_name') %> <%= required_field %>
+    <%= f.text_field :last_name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :email %> <%= required_field %>
+    <%= f.email_field :email, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password, t('password') %> <%= required_field if @user.new_record? %>
+    <%= f.password_field :password, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :phone, t('phone') %>
+    <%= f.text_field :phone, class: 'form-control', required: true %>
+  </div>
+  <div class="form-group">
+    <%= f.label :mobile, t('mobile') %>
+    <%= f.text_field :mobile, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :enquiry_cc_emails, t('.enquiry_cc_emails') %>
+    <%= f.text_area :enquiry_cc_emails, class: 'form-control' %>
+  </div>
+</div>
+
+<% if admin? %>
+<div class="well">
+  <legend><%= t 'coupon' %></legend>
+  <p>
+    Apply the following coupon code to this user's purchases:
+  </p>
+  <div class="form-group">
+    <%= f.label :coupon_id, I18n.t('coupon') %>
+    <%= select("user", "coupon_id", Coupon.all.collect {|c| [ c.code, c.id ] }, {prompt: 'Select Coupon'}, class: 'form-control') %>
+  </div>
+  <legend>Price Override</legend>
+  <p>
+    Applying a price override to a user will set that user's basket and order
+    net value to the price override amount regardless of what is actually in the
+    order.
+  </p>
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :apply_price_override %>
+      Apply price override
+    </label>
+  </div>
+  <div class="form-group">
+    <%= f.label :price_override %>
+    <%= f.text_field :price_override, class: 'span1 form-control' %> EUR
+  </div>
+</div>
+<% end %>
+
+<% if @user.role.has_business_details? %>
+<div class="well">
+  <legend><%= t('business_details') %></legend>
+  <div class="form-group">
+    <%= f.label :business_name, t('users.business_name') %>
+    <%= f.text_field :business_name, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :position, t('users.your_position') %>
+    <%= f.text_field :position, class: 'form-control' %>
+  </div>
+  <script>
+$(function() {
+  $('#user_vat_country_id').change(function() {
+    if($('#user_vat_country_id').val() == '') {
+      $('#vat_number').hide();
+    } else {
+      $('#vat_number').show();
+    }
+  });
+});
+</script>
+  <div class="form-group">
+    <%= f.label :vat_country_id, 'EU tax/VAT registration status' %>
+    <%= select('user', 'vat_country_id', Country.where(in_eu: true).order('name').collect {|c| [ "Registered in #{c.name}", c.id ] }, {include_blank: 'Not registered in the EU'}, style: 'width: 275px;') %>
+  </div>
+  <div id="vat_number" class="form-group"<%= ' style="display: none;"'.html_safe unless @user.vat_country %>>
+    <%= f.label :vat_number, t('users.vat_number') %>
+    <%= f.text_field :vat_number, placeholder: 'GB123456789' %>
+    <%= required_field %>
+  </div>
+</div>
+<% end %>
+
+<% if @user.role.has_a_website? %>
+<div class="well">
+  <div class="form-group">
+    <%= f.label :website, t('users.website') %>
+    <%= f.url_field :website, class: 'form-control' %>
+  </div>
+  <p>
+    <%= t('users.website_format_tip') %>
+  </p>
+</div>
+
+<div class="well">
+  <legend>Logo or Photo of Business</legend>
+  <div class="form-group">
+  	<label for="image">Image (.jpeg, .jpg, .gif, .png)</label>
+  	<input id="image" name="image" type="file">
+  </div>
+</div>
+<% end %>
+
+<div class="well">
+  <legend><%= t('users.billing_details') %></legend>
+  <div class="form-group">
+    <%= f.label :billing_street, t('users.billing_street') %> <%= required_field %>
+    <%= f.text_field :billing_street, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :billing_locality, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :billing_city, t('city') %> <%= required_field %>
+    <%= f.text_field :billing_city, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :billing_county, t('county') %>
+    <%= f.text_field :billing_county, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :billing_postcode, t('postcode') %>
+    <%= f.text_field :billing_postcode, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :billing_country_id, t('countries.country') %> <%= required_field %>
+    <%= select("user", "billing_country_id", Country.popular_billing_countries.collect {|c| [ c.name, c.id ] }, {prompt: t('countries.select_country')}, class: 'form-control') %>
+  </div>
+</div>
+
+<% if @user.role.advertises_generally? %>
+<div class="well">
+  <h2><%= @user.role.has_business_details? ? t('users.describe_your_business') : t('users.describe_yourself') %></h2>
+  <div class="form-group">
+    <%= f.label :description, t('description') %>
+    <%= f.text_area :description, class: 'span6' %>
+  </div>
+</div>
+<% end %>
+
+<% if @user.role.advertises_properties? -%>
+<div class="well">
+  <h2>Google Analytics</h2>
+  <p>
+    We can embed Google Analytics tracking code on your property detail pages
+    for improved reporting of your property advertisement's performance. To
+    do this, go to <a href="http://www.google.com/analytics/">www.google.com/analytics/</a>,
+    create a new profile for <%= request.domain %>, and enter your Google Web
+    Property ID (which looks like UA-00000000-1) below.
+  </p>
+  <div class="form-group">
+    <%= f.label :google_web_property_id, 'Google Web Property ID' %>
+    <%= f.text_field :google_web_property_id, placeholder: 'UA-00000000-1' %>
+  </div>
+</div>
+<% end -%>
+
+<div class="well">
+<% if @user.new_record? %>
+  <legend><%= t 'terms' %></legend>
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :terms_and_conditions %>
+      <%= t('users.i_accept_terms') %>
+      <%= link_to t('view'), terms_path %>
+    <%= required_field %>
+    </label>
+  </div>
+<% end %>
+
+  <div class="form-group">
+    <%= f.submit I18n.t(submit_label), class: 'btn btn-primary btn-large' %>
+  </div>
+</div>
+
+
+<% end %>
+
+<script>
+  var user_name = new LiveValidation('user_name');
+  user_name.add( Validate.Length, { minimum: 5, maximum: 40 } );
+
+  var user_email = new LiveValidation('user_email');
+  user_email.add(Validate.Email);
+
+  var user_password = new LiveValidation('user_password');
+  user_password.add( Validate.Length, { minimum: 5, maximum: 40 } );
+</script>

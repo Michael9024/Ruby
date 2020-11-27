@@ -1,0 +1,24 @@
+= content_for(:title, @location.name)
+= page_header(@location.name)
+
+- if @location.parent
+  p
+    | Parent:
+    =< link_to(@location.parent.name, [:admin, @location.parent])
+
+= form_for [:admin, @location], html: { class: 'well' } do |f|
+  .form-group
+    = f.label :resort_id
+    = f.select(:resort_id, (Resort.all.collect { |r| [ r.country.name + ' > ' + r.name, r.id ] }).sort, { prompt: t('.select_resort'), include_blank: true }, class: 'form-control')
+
+  .form-group
+    = f.submit class: 'btn btn-primary'
+
+table.table.table-bordered
+  thead
+    tr
+      th= t('.location')
+  tbody
+    - @location.children.each do |l|
+      tr
+        td= link_to(l.name, [:admin, l])

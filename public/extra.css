@@ -1,0 +1,29 @@
+/* CSS - to keep */
+
+
+/* CSS - experimental */
+
+div#intro {
+  text-align: justify;
+}
+
+.box .coloured {
+  color: #00AEEF;
+}
+
+.footer_box ul {
+  border-bottom: none;
+}
+
+.footer_box {
+  border-bottom: 1px solid #CCC;
+}
+
+/* height of boxes on home page */
+#boxes .box {
+  height: 420px;
+}
+
+.hide-from-legacy {
+  display: none;
+}

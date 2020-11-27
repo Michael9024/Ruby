@@ -1,0 +1,6 @@
+li
+  a href="#{carousel_slide.link}"
+    = image_tag(carousel_slide.image_url, alt: carousel_slide.alt)
+    .caption
+      = raw carousel_slide.caption
+      = image_tag 'slider-arrow.png', alt: '', style: 'display:inline-block;'

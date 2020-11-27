@@ -1,0 +1,26 @@
+<% if @directory_advert.image %>
+<p style="float:right; margin-left: 1em; margin-bottom: 1em;">
+  <img src="<%= @directory_advert.image.url(400) %>">
+</p>
+<% end %>
+<h1><%= @directory_advert.business_name %></h1>
+<% unless @directory_advert.url.blank? %>
+<p>
+  <%= t('users.website') %>: <%= link_to @directory_advert.url, @directory_advert.url, target: '_blank' %>
+</p>
+<% end %>
+<p>
+  <%= @directory_advert.business_address %><br>
+  <%= @directory_advert.postcode %><br>
+  Phone: <%= @directory_advert.phone %>
+</p>
+<h2><%= t('description') %></h2>
+<p>
+  <%= md @directory_advert.user.description %>
+</p>
+<% unless @directory_advert.opening_hours.blank? %>
+<h2>Opening Hours</h2>
+<p>
+  <%= md @directory_advert.opening_hours %>
+</p>
+<% end %>

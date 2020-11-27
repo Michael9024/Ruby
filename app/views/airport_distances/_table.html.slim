@@ -1,0 +1,11 @@
+- unless airport_distances.empty?
+  table.airport-distances.theme-table
+    tr
+      th Airport
+      th.numeric Distance
+    - airport_distances.each do |ad|
+      tr
+        td= ad.airport.name
+        td.numeric= "#{ad.distance_km}km"
+    tr
+      td colspan="2" style="text-align: center; padding: 1.5rem 0"= link_to 'Airport Transfers &rarr;'.html_safe, find_airport_transfers_path, style: 'padding: 0.8rem 3rem', class: 'button action-button'

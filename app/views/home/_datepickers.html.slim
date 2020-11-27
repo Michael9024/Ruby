@@ -1,0 +1,21 @@
+javascript:
+  $(function() {
+    $('.home-datepicker input').pickadate({
+      onOpen: function() {
+        console.log('Opened up');
+        if($('.home-datepicker .help').length == 0) {
+          $('.home-datepicker .picker__footer').after('<p class="help">#{t('.help')}</p>');
+        }
+      }
+    });
+  });
+.search-field
+  label for="start_date" Check-In
+  .search-field-input
+    .date#arrival-datepicker.home-datepicker
+      input#start_date type="text" value="#{params[:start_date] ? params[:start_date] : t('.check_in_date')}" name="start_date"
+.search-field
+  label for="end_date" Check-Out
+  .search-field-input
+    .date#departure-datepicker.home-datepicker
+      input.form-control type="text" value="#{params[:end_date] ? params[:end_date] : t('.check_out_date')}" name="end_date"

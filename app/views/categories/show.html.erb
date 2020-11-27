@@ -1,0 +1,38 @@
+<ul class="directory-advert-summaries">
+<% @directory_adverts.each do |da| %>
+  <li class="clear-fix">
+    <div class="logo-space">
+      <% if da.image %>
+      <div class="user_logo">
+        <%= link_to_unless(da.description.blank?, "<img src=\"#{h(da.image.url(85))}\">".html_safe, da) %>
+      </div>
+      <% end %>
+    </div>
+    <div class="business-name">
+      <h3>
+        <%= da.business_name %>
+      </h3>
+      <p class="strapline">
+        <%= da.strapline %>
+      </p>
+    </div>
+    <div class="contact-details">
+      <h3>
+        Contact Details
+      </h3>
+      <p>
+        <%= da.business_address %><br>
+        <%= da.phone %>
+      </p>
+    </div>
+    <div class="more-info">
+      <% unless da.description.blank? %>
+      <div><%= link_to 'More Info'.html_safe, da, class: 'button action-button' %></div>
+      <% end %>
+      <% unless da.url.blank? %>
+      <div><%= link_to 'Visit Website <i class="fas fa-arrow-right"></i>'.html_safe, da.url, class: 'btn' %></div>
+      <% end %>
+    </div>
+  </li>
+<% end %>
+</ul>

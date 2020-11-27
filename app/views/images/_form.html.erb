@@ -1,0 +1,70 @@
+<h1>Images for <%= @object.name %></h1>
+
+<% if @object.class == Property %>
+<p>
+  Here you can upload photographs from your computer. The first photo you
+  upload will be the main photo for your advert, but you can change this
+  later if you want.
+</p>
+<% end %>
+
+<% if @image.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
+
+    <ul>
+    <% @image.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @image, html: { multipart: true } do |form| %>
+
+<div class="form-group">
+	<%= form.label :image, "Image (.jpeg, .jpg, .gif, .png)" %><br>
+	<%= form.file_field :image, required: true %>
+</div>
+
+<%= submit_tag "Upload Image", class: 'btn btn-default' %>
+
+<% end %>
+
+<% if @object.respond_to? :images %>
+<h2>Uploaded So Far</h2>
+
+<% if @object.images.any? -%>
+  <ul class="thumbnails clear-fix">
+  <% @object.images.each do |i| %>
+    <li><div class="image_thumbnail"><%= link_to image_tag(i.url(64)), edit_image_path(i) %></div> <%= delete_button(i) %></li>
+  <% end %>
+  </ul>
+<% else -%>
+  <p><%= t('.none_uploaded') %></p>
+<% end -%>
+
+<% end %>
+
+<h2>Finished?</h2>
+
+<% if @object.class == Property %>
+<p>
+  <% if @object.for_sale? %><%= link_to 'Add a new property for sale', new_property_path + "?listing_type=#{Property::LISTING_TYPE_FOR_SALE}" %>
+  <% elsif @object.for_rent? %>
+  <%= link_to 'Add a new property for rent', new_property_path + "?listing_type=#{Property::LISTING_TYPE_FOR_RENT}" %>
+  <% end %>
+</p>
+
+<p><%= link_to 'Edit this property', edit_property_path(@object) %></p>
+<% end %>
+
+<% if @current_user.has_adverts_in_basket? %>
+<p>
+  <%= link_to 'Continue to basket', basket_path %>
+</p>
+<% end %>
+
+<% if @object.class == DirectoryAdvert %>
+<p><%= link_to 'Edit your directory advert', edit_directory_advert_path(@object) %></p>
+<% end %>

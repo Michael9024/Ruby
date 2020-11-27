@@ -1,0 +1,285 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background: #fff;
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+}
+
+body {
+  color: #8c8a8b;
+}
+
+h1, h2, h3, p, li, input, button, select, textarea, b, strong, label {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-weight: 600;
+}
+
+h1 {
+  color: #005e9c;
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 1.25rem;
+  color: #111111;
+}
+
+h3 {
+  color: #231f20;
+  text-transform: uppercase;
+  font-size: 1.3rem;
+}
+
+h4 {
+  color: #222222;
+}
+
+a, button {
+  font-weight: bold;
+  color: #8c8a8b;
+}
+
+p {
+  margin: 0;
+}
+
+p, li {
+  font-size: 1.125rem;
+  line-height: 1.65rem;
+}
+
+iframe {
+  border: none;
+}
+
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=tel],
+input[type=text],
+select,
+textarea {
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 1.125rem;
+}
+
+img {
+  max-width: 100%;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.form-control[readonly].picker__input {
+  cursor: default;
+  background: #fff;
+}
+
+.home-datepicker td + td + td + td + td + td + td .picker__day {
+  font-weight: bold;
+}
+
+.session {
+  ul {
+    justify-content: flex-end;
+  }
+}
+
+.top-nav-btn-breadcrumb {
+  padding-top: 2rem;
+  .flex-32, .flex-3 {
+    margin-bottom: 0 !important;
+  }
+  @media screen and (max-width: 968px) {
+    .flex-32 {
+      margin-bottom: 24px !important;
+    }
+  }
+}
+
+.secondary-nav {
+  ul {
+    display: flex;
+    list-style: none;
+    li {
+      padding: 0 6px;
+      font-size: 20px;
+    }
+  }
+
+  a {
+    color: #7a7979;
+    text-decoration: none;
+    padding: 1rem;
+    transition: 0.3s;
+  }
+
+  a:hover {
+    color: #231f20;
+  }
+}
+
+.page-surround {
+  padding: 5vh 5vw;
+}
+
+.content-inset {
+  margin: 0 5vw;
+}
+
+.logo-container {
+  position: relative;
+  margin-top: 3rem;
+}
+
+.logo-marker {
+  left: 200px;
+  position: absolute;
+  top: -33px;
+}
+
+.logo img {
+  height: 31px;
+}
+
+.divider-bar {
+  border-top: 1px solid #ececec;
+}
+
+.subhead {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 768px) {
+  .page-surround {
+    padding: 5vh 15vw;
+  }
+
+  .content-inset {
+    margin: 0 15vw;
+  }
+
+  .logo-container {
+    margin-top: 0;
+  }
+}
+
+.footer-logo-container {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.direction-column {
+  flex-direction: column;
+}
+
+.content-center {
+  justify-content: center;
+}
+
+.content-space-between {
+  justify-content: space-between;
+}
+
+.content-space-around {
+  justify-content: space-around;
+}
+
+.content-end {
+  justify-content: flex-end;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.hide-md {
+  @media screen and (max-width: 968px) {
+    display: none;
+  }
+}
+
+.show-md {
+  display: none;
+
+  @media screen and (max-width: 968px) {
+    display: inherit;
+  }
+}
+
+.tick {
+  color: green;
+}
+
+.cross {
+  color: red;
+}
+
+.fa-star {
+  color: #005e9e;
+  font-size: 12px;
+}
+
+#resort-nav {
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+  margin-top: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid #005e9c;
+  border-bottom: 1px solid #005e9c;
+  li {
+    // padding: 15px;
+    // background: #005e9c;
+    margin-left: 24px;
+  }
+  a {
+    color: #005e9c;
+    text-decoration: unset;
+  }
+
+  @media screen and (max-width: 968px) {
+      flex-wrap: wrap;
+      li {
+        width: 40%;
+        margin: 0;
+        margin-bottom: 12px;
+      }
+  }
+}

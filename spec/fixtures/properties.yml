@@ -1,0 +1,23 @@
+alpen_lounge:
+  resort: chamonix
+  user: bob
+  name: Alpen Lounge
+  sleeping_capacity: 6
+  number_of_bedrooms: 3
+  listing_type: 0 # For rent
+  weekly_rent_price: 1200
+  currency: euros
+  description: "The Alpen Lounge is a 100 square meter self catering chalet."
+  publicly_visible: 1
+  late_availability: false
+
+chalet_alaska:
+  resort: chamonix
+  user: bob
+  name: Chalet Alaska
+  number_of_bedrooms: 4
+  listing_type: 1 # For sale
+  sale_price: 195000
+  currency: euros
+  publicly_visible: 1
+  late_availability: false

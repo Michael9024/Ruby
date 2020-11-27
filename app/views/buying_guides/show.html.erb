@@ -1,0 +1,12 @@
+<%= content_for :title, "Buying Guide for #{@buying_guide.country}" %>
+
+<%= content_for :breadcrumbs_and_heading, breadcrumbs_and_heading({t('home_page') => root_path}, "Buying Guide - #{@buying_guide.country.name}") %>
+
+<div class="buying-guide-content">
+  <%= raw @buying_guide.content %>
+</div>
+
+<% unless @featured_properties.empty? -%>
+<h2>Featured Properties</h2>
+<%= render 'shared/featured_properties' %>
+<% end -%>

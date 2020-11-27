@@ -1,0 +1,159 @@
+.properties-view {
+  display: block;
+}
+
+.results-count {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  color: black;
+  font-weight: bold;
+
+  select {
+    border: 1px solid #ececec !important;
+    width: 200px !important;
+  }
+}
+
+.properties-container {
+  margin-bottom: 24px;
+  width: 100%;
+}
+
+.properties-map {
+  margin: 1rem 0;
+  min-height: 600px;
+  max-height: 2000px;
+  order: 2;
+  width: 100%;
+}
+
+.property-summaries {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.property-summary {
+  img {
+    width: 100%;
+  }
+}
+
+.property-thumbnail {
+  margin: 0;
+
+  img {
+    display: block;
+  }
+}
+
+.property-block {
+  margin-bottom: 30px;
+
+  > a{
+    display: block;
+  }
+
+  &-images {
+    max-height: 350px;
+    overflow: hidden;
+    position: relative;
+    .property-title {
+      position: absolute;
+      z-index: 97;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      text-align: right;
+      > div {
+        padding: 0 1rem;
+      }
+      h3 {
+        color: white;
+      }
+      h5 {
+        margin: 0.5rem 0
+      }
+    }
+  }
+
+  &-details {
+    background: #ececec;
+
+    > div:first-of-type {
+      padding: 1rem;
+    }
+
+    &-features {
+      margin-top: 2rem;
+      li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.6rem;
+        img {
+          width: 20px;
+          height: 20px;
+          padding-right: 10px;
+        }
+      }
+    }
+
+    &-location {
+      color: black;
+      font-weight: bold;
+    }
+
+    &-price {
+      background: rgba(#002f66, 0.9);
+      color: white;
+      font-size: 21px;
+      padding: 0.5rem;
+    }
+
+    &-description {
+      color: #555;
+    }
+
+    h4 {
+      color: black;
+      text-transform: uppercase;
+      margin: 1rem 0 0.5rem;
+    }
+
+    ul {
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      li {
+        width: 50%;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+    }
+
+    .button {
+      width: 100%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 24px;
+      text-align: center;
+      max-width: 250px;
+    }
+  }
+
+  @media screen and (min-width: 968px) {
+    display: flex;
+    &-images {
+      width: 40%;
+    }
+
+    &-details {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: stretch;
+      width: 60%;
+    }
+  }
+}

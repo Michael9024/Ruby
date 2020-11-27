@@ -1,0 +1,82 @@
+<div id="bloodhound">
+  <form class="search-form cf" action="<%= home_search_path %>">
+    <div class="search-field search-field-destination">
+      <label for="destination">Destination</label>
+      <input id="destination" class="typeahead" type="text" placeholder="Find rentals here" name="place_name" value="<%= @destination %>">
+    </div>
+    <div class="search-field search-field-checkin-checkout">
+      <%= render 'home/date_range_picker', start_date: '', end_date: '' %>
+    </div>
+    <div class="search-field search-field-bedrooms">
+      <label for="search_bedrooms">Bedrooms</label>
+      <select name="bedrooms">
+        <option value="">Choose</option>
+        <% (1..20).each do |i| %>
+          <option value="<%= i %>"><%= i %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="search-field search-field-sleeps">
+      <label for="search_sleeps">Sleeps</label>
+      <select name="sleeps">
+        <option value="">Choose</option>
+        <% (1..40).each do |i| %>
+          <option value="<%= i %>"><%= i %></option>
+        <% end %>
+      </select>
+    </div>
+    <div class="search-field search-field-submit">
+      <input class="button action-button form-control" type="submit" value="Search">
+    </div>
+  </form>
+</div>
+
+<script>
+  $('.search-form').on('submit', () => {
+    const placeName = $('.tt-input').val();
+
+    if(placeName) {
+      return true;
+    } else {
+      alert('Please select a destination');
+    }
+
+    return false;
+  });
+
+  // constructs the suggestion engine
+  const places = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    prefetch: '/search/place_names.json'
+  });
+
+  places.clearPrefetchCache();
+
+  $('#bloodhound .typeahead').typeahead({
+    hint: true,
+    highlight: true
+  }, {
+    name: 'places',
+    source: places,
+    display: 'name',
+    limit: 15,
+    templates: {
+      suggestion: (data) => {
+         return '<div>' + data.name + ' <div class="property-count">' + data.count + ' <div>For Rent</div></div></div>';
+      }
+    }
+  }).keypress((e) => {
+    if (e.which == 13) {
+      $('.tt-suggestion:first-child').trigger('click');
+    }
+  });
+
+  $(() => {
+    $('.search-datepicker input').pickadate({
+      format: 'd mmm, yyyy'
+    });
+
+    $('#destination').val("<%= @destination %>");
+  });
+</script>

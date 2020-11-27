@@ -1,0 +1,8 @@
+li class="main-menu-item" aria-expanded=false
+  button= t('region')
+  ul.main-menu-item-links.match-height
+    - if @region.has_page?('how-to-get-there')
+      li= nav_link(how_to_get_to_region_path(@region), "How to Get to #{@region.name}", 'How to Get There')
+    li= nav_link(region_property_rent_path(@region), "Property for rent in #{@region.name}", t('views.layouts.application.resort_nav.for_rent'))
+    li= nav_link(region_property_sale_path(@region), "Property for sale in #{@region.name}", t('for_sale'))
+    li

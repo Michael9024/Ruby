@@ -1,0 +1,48 @@
+estate_agent:
+  name: Estate agent
+  admin: false
+  select_on_signup: true
+  advertises_properties_for_rent: true
+  advertises_properties_for_sale: true
+  flag_new_development: true
+  has_business_details: true
+  has_a_website: true
+  advertises_through_windows: true
+
+property_developer:
+  name: Property developer
+  admin: false
+  select_on_signup: true
+  advertises_properties_for_rent: false
+  advertises_properties_for_sale: true
+  flag_new_development: true
+  advertises_through_windows: true
+
+property_owner:
+  name: Property owner
+  admin: false
+  select_on_signup: true
+  advertises_generally: false
+  advertises_properties_for_rent: true
+  advertises_properties_for_sale: true
+  flag_new_development: false
+  advertises_through_windows: false
+
+other_business:
+  name: Other business
+  admin: false
+  select_on_signup: true
+  advertises_generally: true
+  advertises_properties_for_rent: false
+  advertises_properties_for_sale: false
+  flag_new_development: false
+  advertises_through_windows: false
+
+administrator:
+  name: Administrator
+  admin: true
+  select_on_signup: false
+  advertises_properties_for_rent: true
+  advertises_properties_for_sale: true
+  flag_new_development: true
+  advertises_through_windows: true

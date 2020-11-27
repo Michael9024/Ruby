@@ -1,0 +1,32 @@
+<%= content_for :title, 'Find Airport Transfers' %>
+
+<%= content_for :breadcrumbs_and_heading, breadcrumbs_and_heading({}, 'Find Airport Transfers') %>
+
+<div id="search-options" class="search-options">
+  <%= render 'search_form' %>
+</div>
+<div id="airport_transfers">
+  <% if defined? @results %>
+  <% if @results.empty? %>
+  <p>
+    There are no airport transfers between <%= @airport %> and <%= @resort %>.
+  </p>
+  <% else %>
+  <% @results.each do |r| %>
+  <div class="property-summary airport_transfer clear-fix">
+    <p class="airport_thumbnail"><%= image_tag(r.banner_image.url, alt: r.business_name) unless r.image.nil? %></p>
+    <div class="airport-transfer-detail">
+      <h3><a href="<%= r.url %>"><%= r.business_name %></a></h3>
+      <p class="strapline">
+        <%= r.strapline %>
+      </p>
+      <%= render partial: 'shuttle_direct', locals: {result: r} %>
+      <div class="actions">
+        <p class="contact_owner"><%= link_to 'Visit website', r.url %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <% end %>
+  <% end %>
+</div><!--#airport_transfers-->

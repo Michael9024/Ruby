@@ -1,0 +1,106 @@
+<script>
+$(document).ready(function() {
+  $('.view_image a').featherlight({targetAttr: 'href'});
+});
+</script>
+
+<h2><%= t title %></h2>
+
+<table class="theme-table">
+  <thead>
+    <tr>
+      <th class="numeric">ID</th>
+      <th><%= t 'edit' %></th>
+      <th><%= t 'resort' %></th>
+      <th><%= t 'name' %></th>
+      <% if adverts.first.instance_of? DirectoryAdvert %>
+      <th><%= t 'images_controller.directory_image' %></th>
+      <% elsif adverts.first.respond_to? :image %>
+      <th><%= t 'images_controller.image' %></th>
+      <% end %>
+      <th class="numeric"><%= t 'views.adverts._table.views' %></th>
+      <% if adverts.first.respond_to? :clicks %>
+      <th class="numeric clicks"><%= t 'clicks' %></th>
+      <% end %>
+      <th><%= t 'advert_start_date' %></th>
+      <th><%= t 'advert_end_date' %></th>
+      <th><%= t 'advert_status' %></th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+<% adverts.each do |a| %>
+    <tr>
+      <td class="numeric"><%= a.id %></td>
+      <td>
+        <%= link_to t('edit'), edit_polymorphic_path(a), title: "Edit #{a.to_s}", class: 'btn btn-default' %>
+        <%= delete_button(a) if a.advert_status == :new || admin? %>
+      </td>
+      <td><%= a.resort.name %></td>
+      <td><%= link_to a.name, polymorphic_path(a) %></td>
+      <% if a.instance_of? DirectoryAdvert %>
+      <td class="view_image">
+        <% if a.image %>
+        <a href="#<%= "#{a.class}_img_#{a.id}" %>"><%= t 'images_controller.directory_image' %></a>
+        <div style="display: none;">
+          <img src="<%= a.image.url %>" id="<%= "#{a.class}_img_#{a.id}" %>">
+        </div>
+        <% end %>
+      </td>
+      <% elsif a.respond_to? :image %>
+      <td class="view_image">
+        <% if a.image %>
+        <a href="#<%= "#{a.class}_img_#{a.id}" %>"><%= t 'images_controller.image' %></a>
+        <div style="display: none;">
+          <img src="<%= a.image.url %>" id="<%= "#{a.class}_img_#{a.id}" %>">
+        </div>
+        <% end %>
+      </td>
+      <% end %>
+      <td class="numeric"><%= a.views %></td>
+      <% if a.respond_to? :clicks %>
+      <td class="numeric clicks"><%= a.clicks.count %></td>
+      <% end %>
+      <% if a.currently_advertised? %>
+      <td>
+        <%= l a.current_advert.starts_at, format: :short %>
+      </td>
+      <td>
+        <%= l a.current_advert.expires_at, format: :short %>
+      </td>
+      <% else %>
+      <td>
+        &nbsp;
+      </td>
+      <td>
+        &nbsp;
+      </td>
+      <% end %>
+      <td>
+        <%= t 'advert_statuses.' + a.advert_status.to_s %>
+      </td>
+      <td class="numeric">
+        <% if a.currently_advertised? %>
+          <% if a.current_advert.window_spot? %>
+            <%= form_tag controller: 'properties', action: 'remove_from_window', id: a.id do %>
+            <%= submit_tag t('advertise_action.remove_from_window'), class: 'btn' %>
+            <% end %>
+          <% else %>
+            <%= form_tag controller: a.class.table_name, action: 'advertise_now', id: a.id do %>
+            <%= submit_tag t('advertise_action.renew'), class: 'btn' %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <% if a.advert_status == :dormant %>
+          <%= link_to t('advertise_action.dormant'), choose_window_property_path(a), class: 'btn btn-default' %>
+          <% else %>
+            <%= form_tag controller: a.class.table_name, action: 'advertise_now', id: a.id do %>
+            <%= submit_tag t('advertise_action.' + a.advert_status.to_s), class: 'btn' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

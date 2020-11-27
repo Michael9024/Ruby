@@ -1,0 +1,30 @@
+<div class="page-header">
+  <h1><%= link_to 'CMS', cms_path %> &rarr; Property Volume Discounts</h1>
+</div>
+<p>
+  <%= link_to 'New', new_property_volume_discount_path, class: 'btn' %>
+</p>
+<% if @property_volume_discounts.empty? %>
+<p>There are no property volume discounts set up yet.</p>
+<% else %>
+<table>
+  <thead>
+    <tr>
+      <th>Current Property Number</th>
+      <th>Discount Percentage</th>
+      <th>Discount Amount</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @property_volume_discounts.each do |property_volume_discount| %>
+    <tr>
+      <td class="numeric"><%= link_to property_volume_discount.current_property_number, edit_property_volume_discount_path(property_volume_discount) %></td>
+      <td class="numeric price"><%= property_volume_discount.discount_percentage %>%</td>
+      <td class="numeric price"><%= property_volume_discount.discount_amount %> GBP</td>
+      <td><%= link_to 'Delete', property_volume_discount, confirm: t('are_you_sure'), method: :delete %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

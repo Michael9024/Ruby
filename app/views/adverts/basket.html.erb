@@ -1,0 +1,114 @@
+<%= content_for :title, t('basket') %>
+
+<%= content_for :breadcrumbs_and_heading, breadcrumbs_and_heading({}, t('basket')) %>
+
+<%= render partial: 'shared/steps', locals: { step: 6 } %>
+
+<% if @lines.empty? %>
+  <p><%= t '.empty' %></p>
+<% else %>
+<%= form_tag action: 'update_basket_contents' do %>
+  <table id="basket" class="table table-bordered">
+    <thead>
+      <tr>
+        <th><%= t 'name' %></th>
+        <th><%= t 'edit' %></th>
+        <th><%= t 'duration' %></th>
+        <th><%= t 'price' %></th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @lines.each do |line| %>
+      <tr>
+        <td><%= line.description %></td>
+        <td><% unless line.coupon || line.advert.nil? %><%= link_to t('edit'), edit_advert_object_path(line.advert) %><% end %></td>
+        <td class="numeric">
+          <% unless line.coupon || line.advert.nil? %>
+          <select name="months[<%= line.advert.id %>]" onchange="this.form.submit()">
+            <% line.advert.object.valid_months.each do |months| %>
+            <option value="<%= months %>"<%= " selected" if line.advert.months==months %>><%= pluralize(months, 'month') %></option>
+            <% end %>
+          </select>
+          <% end %>
+        </td>
+        <td class="numeric">
+          <%= gbps_from_pence(line.price) %>
+          <% if line.pay_monthly? %>
+          <br>
+          <%= t('adverts_controller.basket.twelve_monthly_payments') %><br>
+          <%= t('adverts_controller.basket.first_payment') %>: <%= gbps_from_pence(line.price) %>
+<% if @current_user.pays_vat? -%>
+          +<%= t('adverts_controller.vat') %>
+<% end -%>
+          <br>
+          <%= t('adverts_controller.basket.followed_by_11_payments_of') %>: <%= gbps_from_pence(line.price) %>
+<% if @current_user.pays_vat? -%>
+          +<%= t('adverts_controller.vat') %>
+<% end -%>
+          <% end %>
+        </td>
+        <td>
+          <% unless line.coupon || line.advert.nil? %>
+          <input type="submit" class="btn btn-default" value="<%= t('adverts_controller.basket.remove') %>" name="remove_advert[<%= line.advert.id %>]">
+          <% end %>
+          <% if line.windows.to_i > 0 %>
+          <input type="submit" class="btn btn-default" value="<%= t('adverts_controller.basket.remove') %>" name="remove_advert[windows]">
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+      <tr>
+        <th colspan="5" id="coupon_box">
+          <%= t('coupon') %><br>
+          <small>
+  <% if @current_user.coupon -%>
+            <%= t('adverts_controller.coupon_code_applied') %>: <strong><%= @current_user.coupon.code %></strong>
+  <% else -%>
+            <%= t('adverts_controller.no_coupon_code_applied') %>
+  <% end -%>
+          </small><br>
+          <%= text_field_tag 'code', nil, class: 'form-control' %>
+          <%= submit_tag t('adverts_controller.basket.apply_code'), class: 'btn btn-default' %>
+        </th>
+      </tr>
+      <tr>
+        <th colspan="3"><%= t('adverts_controller.subtotal') %></th>
+        <td class="numeric"><%= gbps_from_pence @subtotal %></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <th colspan="3"><%= t("adverts_controller.#{@current_user.tax_description.downcase.gsub(' ', '_')}") %></th>
+        <td class="numeric"><%= gbps_from_pence @tax_amount %></td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <th colspan="3"><%= t('.total') %></th>
+        <td class="numeric"><%= gbps_from_pence @total %></td>
+        <td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="basket_buttons">
+    <input type="submit" name="update_durations" value="<%= t 'update' %>" class="btn btn-default">
+  </p>
+  <p>
+    <%= t('adverts_controller.by_pressing_place_order_you_agree_to_the_terms_and_conditions') %>
+    <%= link_to t('view'), terms_path %>
+  </p>
+  <p>
+    <input type="submit" name="empty_basket" value="<%= t 'adverts_controller.basket.empty_basket' %>" class="btn btn-danger" data-confirm="Are you sure you want to empty your basket?">
+    <input type="submit" name="place_order" value="<%= t 'adverts_controller.place_order' %>" class="btn btn-primary">
+  </p>
+<% end %>
+<% end %>
+
+<% if @current_user.advertises_through_windows? %>
+<p>Would you like to <%= link_to 'buy more advertising windows', buy_windows_adverts_path %>?</p>
+<% end %>
+
+<script>
+$('.basket_buttons').hide()
+</script>
+
+<%= render 'shared/worldpay_logos' %>

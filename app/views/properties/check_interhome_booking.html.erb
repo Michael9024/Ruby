@@ -1,0 +1,42 @@
+<div id="booking_results">
+<% if @availability.unavailable? -%>
+  <h2 id="quote">We are very sorry but it appears that this property is no longer available. Please see other available properties.</h2>
+<% else -%>
+  <div id="quote">
+    <h2>Summary</h2>
+    <h4>Congratulations, this property is available for your selected dates</h4>
+    <table class="table">
+      <tr>
+        <td>Property</td>
+        <td><%= @property.name %></td>
+      </tr>
+      <tr>
+        <td>Check-in</td>
+        <td><%= l(Date.parse(@availability.start_date), format: :long) %></td>
+      </tr>
+      <tr>
+        <td>Check-out</td>
+        <td><%= l(Date.parse(@availability.end_date), format: :long) %></td>
+      </tr>
+      <tr>
+        <td>Basic Cost</td>
+        <td><%= number_to_currency(@price_detail.price, unit: '€', precision: 2) %></td>
+      </tr>
+    </table>
+  </div><!--/ padded div -->
+<% if @additional_services -%>
+<div class="trigger-update">
+<%= render 'interhome_bookable_services' unless @additional_services.bookable.empty? %>
+
+<%= render 'interhome_additional_services_not_included' unless @additional_services.not_included.empty? %>
+
+<%= render 'interhome_additional_services_included' unless @additional_services.included.empty? %>
+
+</div><!--.trigger-update-->
+
+<%= render 'interhome_contact_details' %>
+
+<% end -%><!--/ additional services -->
+
+<% end -%><!--/ availability -->
+</div><!--#booking-results-->

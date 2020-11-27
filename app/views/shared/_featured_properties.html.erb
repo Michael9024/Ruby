@@ -1,0 +1,58 @@
+<% unless @featured_properties.empty? -%>
+<% num = @featured_properties.count -%>
+<%
+=begin
+%>
+<script>
+$(document).ready(function() {
+  $('.carousel').carousel();
+});
+</script>
+<div id="featured-properties" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="item active">
+      <div class="clear-fix">
+        <%= featured_properties(@featured_properties[0..(num/3 -1)]) %>
+      </div>
+    </div>
+    <div class="item">
+      <div class="clear-fix">
+        <%= featured_properties(@featured_properties[(num/3)..(num * 2/3 - 1)]) %>
+      </div>
+    </div>
+    <div class="item">
+      <div class="clear-fix">
+        <%= featured_properties(@featured_properties[(num * 2/3)..(num - 1)]) %>
+      </div>
+    </div>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#featured-properties" data-slide="prev"><span class="fas fa-caret-circle-left"></span></a>
+  <a class="carousel-control right" href="#featured-properties" data-slide="next"><span class="fas fa-caret-circle-left"></span></a>
+</div>
+<%
+=end
+%>
+
+<div class="preview-layout">
+  <% @featured_properties.each do |p|%>
+    <% cache(p) do -%>
+      <a class="preview-item" href="<%= property_path(p) %>" title="<%= p.name %>">
+        <% if p.image %>
+        <%= image_tag(p.image.url(258), alt: featured_property_alt_attribute(p)) %>
+        <% else %>
+        <%= image_tag('image-missing.png', alt: 'Image missing') %>
+        <% end %>
+        <div class="overlay">
+            <h3 class="title"><%= featured_property_price_message(p) %></h3>
+            <div class="description"><%= p.resort %></div>
+            <% if p.for_rent? -%>
+              <div class="description">(Sleeps <%= p.sleeping_capacity %>)</div>
+            <% end -%>
+        </div>
+      </a>
+    <% end -%>
+  <% end %>
+</div>
+
+<% end -%>

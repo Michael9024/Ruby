@@ -1,0 +1,32 @@
+<%= render 'users/advertising_options' %>
+
+<%= content_for :breadcrumbs_and_heading, breadcrumbs_and_heading({t('advertise') => advertise_path}, t('my_enquiries')) %>
+
+<% if @enquiries.empty? %>
+<p>You have no enquiries.</p>
+<% else %>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>When</th>
+      <th><%= t('phone') %></th>
+      <th><%= t('enquiries_controller.check_in_date') %></th>
+      <th><%= t('enquiries_controller.check_out_date') %></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @enquiries.each do |enquiry| %>
+    <tr>
+      <td><%= enquiry.name %> &lt;<%= mail_to(enquiry.email) %>&gt;</td>
+      <td><%= l enquiry.created_at, format: :short %></td>
+      <td><%= enquiry.phone %></td>
+      <td><%= l(enquiry.date_of_arrival, format: :short) unless enquiry.date_of_arrival.nil? %></td>
+      <td><%= l(enquiry.date_of_departure, format: :short) unless enquiry.date_of_departure.nil? %></td>
+      <td><%= view_button(enquiry) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>

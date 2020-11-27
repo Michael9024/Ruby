@@ -1,0 +1,69 @@
+alice:
+  first_name: Alice
+  last_name: Adams
+  email: alice@mychaletfinder.com
+  encrypted_password: 53a9042fc50d6abdf8f54930b6e76d0c3bb514f2 # =sesame
+  salt: salt
+  description: An estate agent
+  billing_street: 1 Main Avenue
+  billing_city: Winchester
+  billing_country: united_kingdom
+  terms_and_conditions: true
+  role: estate_agent
+  business_name: 'Alice Properties'
+
+bob:
+  first_name: Bob
+  last_name: Brown
+  email: bob@mychaletfinder.com
+  encrypted_password: 18bb2281de1676b2a3b611e36243ff822c22146d # =secret
+  salt: salt
+  description: A property developer
+  billing_street: 10 Pound Walk
+  billing_city: Manchester
+  billing_country: united_kingdom
+  phone: '+44.1234567890'
+  terms_and_conditions: true
+  role: property_developer
+
+dave:
+  first_name: Dave
+  last_name: Davies
+  email: dave@mychaletfinder.com
+  encrypted_password: 18bb2281de1676b2a3b611e36243ff822c22146d # =secret
+  salt: salt
+  description: A property owner
+  billing_street: Restover Lodge
+  billing_city: Doncaster
+  billing_country: united_kingdom
+  phone: '+44.1234567890'
+  terms_and_conditions: true
+  role: property_owner
+
+emily:
+  first_name: Emily
+  last_name: Evans
+  email: emily@mychaletfinder.com
+  encrypted_password: 18bb2281de1676b2a3b611e36243ff822c22146d # =secret
+  salt: salt
+  description: A bar owner
+  billing_street: Restover Lodge
+  billing_city: Doncaster
+  billing_country: united_kingdom
+  phone: '+44.1234567890'
+  terms_and_conditions: true
+  role: other_business
+
+tony:
+  first_name: Tony
+  last_name: Taccone
+  email: tony@mychaletfinder.com
+  encrypted_password: 18bb2281de1676b2a3b611e36243ff822c22146d # =secret
+  salt: salt
+  description: An administrator
+  billing_street: Restover Lodge
+  billing_city: Doncaster
+  billing_country: united_kingdom
+  phone: '+44.1234567890'
+  terms_and_conditions: true
+  role: administrator

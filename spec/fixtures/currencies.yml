@@ -1,0 +1,12 @@
+euros:
+  name: Euros
+  unit: €
+  pre: true
+  code: EUR
+  in_euros: 1
+gbps:
+  name: Gbps
+  unit: £
+  pre: true
+  code: GBP
+  in_euros: 0.89

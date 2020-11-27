@@ -1,0 +1,11 @@
+{
+  "name": "myskichalet",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "3.5",
+    "vex-js": "^4.1.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "2.11.2"
+  }
+}

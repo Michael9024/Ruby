@@ -1,0 +1,649 @@
+fr:
+  account: Compte
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            billing_city:
+              blank: is required
+            billing_country_id:
+              blank: is required
+            billing_street:
+              blank: is required
+            first_name:
+              blank: is required
+            last_name:
+              blank: is required
+            password:
+              too_short: minimum length is 5 characters
+            email:
+              taken: ' address has already been taken by an existing customer, please choose another'
+  address: 'Adresse'
+  advert_start_date: Advert Start Date
+  advert_end_date: Advert End Date
+  advert_status: 'Advert Status'
+  advert_statuses:
+    dormant: Dormant
+    expired: Expiré
+    live: Démontrant
+    new: Awaiting Checkout
+  advertise_action:
+    dormant: 'Place In Window'
+    expired: 'Annoncez Nouveau'
+    new: 'Annoncez Maintenant'
+    remove_from_window: 'Remove From Window'
+    renew: 'Renew'
+  advertise: Annoncez
+  adverts:
+    basket:
+      empty: Votre panier est vide.
+      total: Total
+    my:
+      days_remaining: Days Remaining
+      expires_on: Expires On
+      number_free: Number Free
+      number_in_use: Number in Use
+      purchased_on: Purchased On
+      total: Total
+  adverts_controller:
+    add_to_basket: Ajouter au Panier
+    basket:
+      apply_code: 'Appliquer le Code'
+      empty_basket: Empty Basket
+      first_payment: 'Premier paiement'
+      followed_by_11_payments_of: 'Suivi par 11 paiements de'
+      remove: 'Supprimer'
+      twelve_monthly_payments: 'Douze versements mensuels'
+    buy_advertising_windows: Buy Advertising Windows
+    by_pressing_place_order_you_agree_to_the_terms_and_conditions: 'By pressing Place Order you acknowledge that you have read, understood and agree to be bound by the terms and conditions.'
+    coupon_code_applied: 'You have the following promotion code applied'
+    no_coupon_code_applied: 'You have no promotion code applied.'
+    notices:
+      basket_emptied: Your basket has been emptied.
+      basket_updated: Basket updated.
+    place_order: Commander
+    subtotal: Subtotal
+    vat: VAT
+    windows: Windows
+    zero_rated: 'Zero Rated'
+  advert_details: Détail de l'annonce
+  airport_transfers_controller:
+    titles:
+      index: 'Manage your airport transfers list'
+  are_you_sure: 'Etes-vous sûr?'
+  basket: Panier
+  bathrooms: Salles de bains
+  bedrooms: 'Chambres'
+  business: Entreprise
+  business_details: Détails d'entreprise
+  categories_controller:
+    not_found: 'That category does not exist.'
+  category: 'Catégorie'
+  category_names:
+    airport_transfer: Transfert de l'aéroport
+    architect: Architectes
+    babysitter: Babysitters
+    bars: Bars
+    car_hire: Location de voiture
+    cleaners: Nettoyeurs
+    creche: Creches
+    estate_agents: Agents immobiliers
+    foreign_currency: Foreign currency
+    heliskiing: Heliskiing
+    home_appliances: Appareils électroménagers
+    home_insurance: Assurance habitation
+    interior_design: Architecte d'intérieur
+    internet_cafe: Cybercafés
+    letting_agents: Agence de location
+    mountain_guide: Guides de montagne
+    other: Divers
+    outdoor_adventures: Outdoor adventures
+    property_developers: Property developers
+    restaurants: Restaurants
+    ski_hire: Location de ski
+    ski_school: Ski school
+    takeaways: A emporter
+    taxi: Taxis
+  change: Changer
+  checkout: Commander
+  city: Ville
+  clicks: Clicks
+  cms_controller:
+    cms: CMS
+    gross_sales_analysis: Gross Sales Analysis
+    guide: Guide
+    management_information: Management Information
+  contact: Contact
+  contact_details: Coordonnées
+  continue: Continuer
+  coupon: 'Promotion code'
+  coupons: 'Promotion Codes'
+  coupons_controller:
+    coupon_code_applied: 'Promotion code has been applied'
+    coupon_code_expired: 'That promotion code has expired'
+    coupon_code_not_recognised: 'That promotion code was not recognised'
+    enter_a_coupon_code: 'Please enter a promotion code'
+  countries:
+    country: 'Pays'
+    select_country: 'Select Country'
+  countries_controller:
+    titles:
+      lakes_and_mountains: 'Lakes and Mountains in %{country}'
+  county: Région
+  currencies_controller:
+    exchange_rates_updated: 'Exchange rates updated.'
+  date:
+    formats:
+      short: "%d %b %Y"
+  delete: 'Supprimer'
+  description: 'Description'
+  details: 'Détails'
+  directory: Répertoire
+  directory_adverts:
+    form:
+      resorts: 'Resorts'
+    new:
+      heading: 'New Directory Advert'
+      title: 'New Directory Advert'
+  directory_adverts_controller:
+    added_to_basket: 'Your directory advert has been added to your basket.'
+    created: "Your directory advert was successfully created."
+    saved: "Your directory advert was successfully updated."
+  directory_adverts: 'Directory Adverts'
+  duration: Durée
+  edit: Modifier
+  email: 'Email'
+  enquire: Contacter
+  enquiries_controller:
+    check_in_date: "Date d'arrivée"
+    check_out_date: Date de départ
+    comments: Commentaires
+    number_of_adults: "Nombre d'adultes"
+    number_of_children: "Nombre d'enfants (3 à 16)"
+    number_of_infants: Nombre de nourrissons (moins de 3 ans)
+    permission_to_contact: Please send me details of future offers
+    send_an_email: Envoyer un E-mail
+    your_enquiry_has_been_sent: Votre demande a été envoyée.
+  example: Exemple
+  featured_accommodation: 'Hébergement en Vedette'
+  featured_resorts: Stations en Vedette
+  features: 'Features'
+  first_name: Prénom
+  floor_area: 'Floor area'
+  for_rent: 'À Louer'
+  for_sale: 'À Vendre'
+  gallery: Gallery
+  garden: 'Garden'
+  google:
+    site_verification: lqULaLa4Fubz6zh09WjcMwZHUGPb7SnTz38rxtkcRHY
+    web_property_id: UA-22451896-3
+  holiday_type_brochures:
+    show:
+      heading: '%{holiday_type} in %{place}'
+      regions: Regions
+      resorts: Resorts
+  holiday_types:
+    show:
+      title: '%{holiday_type}'
+  home:
+    datepickers:
+      check_in_date: 'Check-In Date'
+      check_out_date: 'Check-Out Date'
+      help: 'Many properties only accept check-ins on Saturdays and have a minimum stay of 7 nights.'
+    quick_search:
+      choose_country: 'Choose Country'
+      choose_country_first: 'Choose Country First ↑'
+      choose_holiday: 'Choose Holiday'
+      choose_holiday_first: 'Choose Holiday First ↑'
+      choose_resort: 'Choose Resort'
+      heading: 'Accommodation Search'
+      search: 'Search'
+    terms:
+      heading: 'Terms and Conditions'
+      title: 'Terms and Conditions'
+  home_page: 'Accueil'
+  images_controller:
+    banner_image: 'Banner Image'
+    deleted: 'Image deleted.'
+    directory_image: 'Directory Image'
+    image: 'Image'
+    image_uploaded: Image uploaded.
+    invalid_dimensions: This image was not accepted because it does not have valid dimensions.
+    problem_uploading: 'There was a problem uploading your image. Was it in the correct format?'
+    saved: 'Image saved.'
+  interhome:
+    features:
+      airconditionning: Air conditioning
+      babycot: Baby cot
+      balcony: Balcony
+      bath: Bath
+      bathandshower: Bath and shower
+      bbq: BBQ
+      bikingplains: Biking plains
+      breakfast: Breakfast
+      changelinen: Linen changing
+      childrenplayground: Childrens playground
+      cleaning: Cleaning
+      cook: Cook
+      crosscountryski: Cross-country ski
+      dishwasher: Dishwasher
+      dsl: DSL
+      dvdplayer: DVD player
+      elevator: Elevator
+      extrabed: Extra bed possible
+      fenced: Fenced
+      fireplace: Fireplace
+      fitness: Fitness
+      garden: Garden
+      golfing: Golfing
+      halfboard: Halfboard
+      hikingmountains: Hiking mountains
+      hikingplains: Hiking plains
+      icerink: Ice rink
+      internet: Internet
+      isdn: ISDN
+      massage: Massage
+      microwave: Microwave
+      mountainbike: Mountain biking
+      nonsmoking: Non-smoking
+      nordicwalking: Nordic walking
+      oven: Oven
+      parking: Parking
+      parkingcovered: Covered parking
+      parkingprivate: Private parking
+      petsallowed: Pets allowed
+      pool: Pool
+      poolchildren: Piscine pour enfants
+      poolheated: Heated pool
+      poolindoor: Indoor pool
+      poolprivat: Private pool
+      reception: Reception
+      residence: Residence
+      restaurant: Restaurant
+      riding: Riding
+      sailing: Sailing
+      sauna: Sauna
+      seaview: Sea view
+      shower: Shower
+      skiarea: Ski area
+      snowboard: Snowboarding
+      solarium: Solarium
+      surfing: Surfing
+      tabletennis: Table tennis
+      telephone: Telephone
+      tennis: Tennis
+      terrace: Terrace
+      thalasso: Thalasso
+      themepark: Theme park
+      toboggan: Toboggan
+      tumbler: Tumbler
+      tv: TV
+      washingmachine: Washing machine
+      whirlpool: Whirlpool
+      winterwalkingpath: Winter walking path
+      wlan: WLAN
+  last_name: Nom de famille
+  late_availability:
+    index:
+      action: 'Search for last minute accommodation for your ski holidays or summer vacation.'
+      choose_country: 'Choose Country'
+      choose_country_first: 'Choose Country First ↑'
+      choose_resort: 'Choose Resort'
+      featured_properties: 'Featured Last Minute Properties'
+      form_heading: 'Last Minute Search'
+      heading: 'Late Availability'
+      intro: 'Still not booked your accommodation for your ski holidays? Use our search tool that will help you find what you are looking for quickly.  Our chalet rentals, apartments to rent and other holiday rental accommodation lists are updated every day so you can be assured you will only see what is currently available.'
+  late_availability_controller:
+    titles:
+      index: 'Late Availability - Last Minute Ski Accommodation'
+  layouts:
+    region_nav:
+      how_to_get_there: 'How to Get There'
+    resort_nav:
+      resort_guide: 'Guide de Station de Ski'
+  main_image: 'Main image'
+  map: Carte
+  mobile: Portable
+  my_adverts: 'My Adverts'
+  my_enquiries: My Email Enquiries
+  my_details_saved: 'Your details have been saved.'
+  name: 'Nom'
+  new_developments: 'Nouveaux Développements'
+  notices:
+    added: Added.
+    admin_required: You need to be logged in as an administrator to do that.
+    advert_removed: Advert removed.
+    created: Created.
+    deleted: Deleted.
+    saved: Saved.
+    sign_in_required: Please sign in or sign up first.
+  number_of_bathrooms: 'Number of bathrooms'
+  number_of_bedrooms: 'Number of bedrooms'
+  orders:
+    receipts:
+      amount: 'Amount'
+      heading: 'Receipts'
+      invoice_pdf: 'Invoice (PDF)'
+      no_receipts: 'You have no receipts.'
+      order_number: 'Order number'
+      when_placed: 'When placed'
+  orders_controller:
+    no_order_found: "We couldn't find an order for you."
+    receipt_not_found: "We couldn't find that order."
+  password: 'Mot de passe'
+  payments_controller:
+    failure_validating_payment: 'There has been a failure validating your payment'
+    no_payment_made: 'No payment was made'
+    payment_declined: 'Your payment was declined'
+    payment_received: 'Payment received'
+    processing_error: 'There was an error processing your payment'
+    unconfirmed: 'Your payment has not recorded by us as we could not confirm if it was successful'
+  phone: Téléphone
+  pierre_et_vacances:
+    features:
+      accueil_mobilite_reduite: Accueil mobilite reduite
+      animaux_admis: Animaux admis
+      bibliotheque: Library
+      boutiques: Boutiques
+      cafes_bars: Cafés / bars
+      garderie: Garderie
+      jacuzzi: Jacuzzi
+      laverie: Laverie
+      linge_toilette: Linge toilette
+      lit_bebe: Lit bebe
+      location_velos: Location velos
+      mail: Mail
+      menage: Menage
+      parking: Parking
+      reception_24_24: 24-hour reception
+      restaurants: Restaurants
+      hammam: Hammam
+      salle_musculation: Salle musculation
+      sauna: Sauna
+      superette: Superette
+      telecopie: Telecopie
+      thalasso: Thalasso
+  piste_map: Plan des Pistes
+  please_correct: Please correct the following errors
+  plot_size: 'Plot size'
+  postcode: 'ZIP / postcode'
+  price: Prix
+  privacy: 'Politique de confidentialité'
+  property_id: ID de Propriété
+  property_name: 'Nom de la propriété'
+  property_rentals: 'Location de Biens'
+  property_sales: 'Propriétés à Vendre'
+  property_type: 'Type de propriété'
+  properties_controller:
+    added_to_basket: 'Your property advert has been added to your basket.'
+    created: "Your property advert was successfully created. Now let's add some photos."
+    created_and_assigned_to_window: "Your property advert was successfully created. We've automatically placed it in one of your free windows. Now let's add some photos."
+    created_but_no_empty_windows_left: "Your property advert was successfully created but you have no empty windows to place it in."
+    meta_descriptions:
+      show: "%{resort} Accommodation - %{strapline}"
+      show_interhome: "%{resort} Accommodation - %{strapline}"
+    placed_in_window: "Your property advert has been placed in a window."
+    removed_from_window: "Your property advert has been removed from its window."
+    saved: "Your property advert details have been saved."
+  properties:
+    accommodation_type: Type d'hébergement
+    browse:
+      distance_from_lift: 'Distance from lift'
+    choose_a_window: Choose a Window
+    contact:
+      heading: 'Enquire about %{property}'
+      title: 'Enquire about %{property} in %{resort}, %{country}'
+    featured:
+      alt_for_rent: '%{resort} accommodation chalets for rent in %{resort} apartments to rent in %{resort} holiday homes to rent in %{resort}'
+      alt_for_sale: '%{resort} accommodation chalets for sale in %{resort} apartments to buy in %{resort} holiday homes to buy in %{resort}'
+      sale_price: 'Sale price %{price}'
+      weekly_price_from: 'From %{price} weekly'
+    features:
+      balcony: Balcon
+      bed_and_breakfast: 'Bed & breakfast'
+      board_basis: Board basis
+      cable_or_satellite: TV par câble/satellite
+      cave: Grotte
+      children_welcome: Enfants bienvenus
+      disabled: Accès des personnes handicapées
+      freeview: Freeview/TNT
+      full_board: Full board
+      fully_equipped_kitchen: Cuisine entièrement équipée
+      garage: Garage
+      garden: Jardin
+      half_board: Half board
+      hot_tub: Bain à remous
+      indoor_swimming_pool: Piscine couverte
+      log_fire: Feu de bois
+      long_term_lets_available: Location à long terme disponibles
+      mountain_views: Vue sur la montagne
+      new_development: Nouvelle construction
+      no_parking: Pas de parking
+      no_tv: Pas de TV
+      off_street_parking: Stationnement hors-rue
+      on_street_parking: Stationnement sur-rue
+      outdoor_swimming_pool: Piscine extérieure
+      parking: Stationnement
+      pets: Animaux acceptés
+      sauna: Sauna
+      self_catering: Self catering
+      short_stays: Short stays
+      ski_in_ski_out: Ski in/ski out
+      smoking: Permission de fumer
+      swimming_pool: Piscine
+      terrace: Terrace
+      tv: TV
+      wifi: WiFi
+    filters:
+      children_welcome: Enfants
+      disabled: Handicapés
+      garage: Garage
+      garden: Jardin
+      long_term_lets_available: Long terme
+      parking: Stationnement
+      pets: Animaux acceptés
+      satellite: Satellite
+      short_stays: Short stays
+      ski_in_ski_out: Ski in/ski out
+      smoking: Fumer
+      tv: TV
+      wifi: WiFi
+    no_matching_resorts: "Il n'ya pas de propriétés annoncées à cette station de ski qui correspondent à vos critères de recherche. De nombreuses locations de vacances seulement accepter des arrivées les samedis et avoir un séjour minimum de 7 jours. Si possible et vous êtes flexible pour les dates, s'il vous plaît essayer de modifier vos dates d'arrivée et / ou la durée de votre séjour - merci."
+    place_in_window: 'Place in Window'
+    property_summary:
+      sleeps: Sleeps
+    select_resort: Sélectionnez une station
+    strapline_example: Slogan Par Exemple
+    strapline_example_content: 'A large, traditional alpine luxury ski chalet, sleeping 10. Full of charm and character.'
+    titles:
+      browse_for_sale: "Propriétés à Louer à %{resort}"
+      browse_for_sale: "Propriétés à Vendre à %{resort}"
+      edit: 'Modifier la Propriété'
+      new: Nouvelle Propriété
+      new_developments: "Développements Nouvelle Propriété à %{resort}"
+      show: "%{property_name} - Chalet / Appartement %{rent_or_sale} à %{resort}, %{country}"
+  receipts: Recettes
+  regions:
+    how_to_get_there:
+      heading: 'How to Get There'
+    show:
+      title: '%{region} Region Information'
+      heading: 'Region Information'
+  registration: Enregistrement
+  resort: 'Station'
+  resorts:
+    how_to_get_there:
+      heading: 'How to Get There'
+    summer_holidays:
+      heading: 'Summer Holidays'
+  resorts_controller:
+    detail:
+      how_to_get_there: "How to Get There"
+      insider_view: "%{resort}: The MyChaletFinder.com Insider View"
+      key_information: "Key Information"
+      living_in: "Living in %{resort}"
+      local_area: Local Area
+      more_detail: "More Detail"
+      owning_a_property_in: "%{resort} Accommodation"
+      whole_area: Whole Area
+    facts:
+      altitude: Altitude
+      apres_ski: Apres ski
+      babysitting_services: Baby-sitters
+      beginner: Beginner
+      black: Noir
+      blue: Bleu
+      cable_car: Téléphérique
+      chair: Télésiège
+      creche: Crèche
+      cross_country: Ski de fond
+      distance: Distance
+      distance_from_airport: Distance de l'aéroport
+      drags: Glisser
+      expert: Expert
+      family: Family
+      funicular: Funiculaire
+      glacier_skiing: Ski sur glacier
+      gondola: Gondole
+      green: Beginner areas
+      intermediate: Intermediate
+      longest_run: Piste la plus longue
+      mountain_restaurants: Restaurants de montagne
+      nearest_airport: Aéroport le plus proche
+      railways: Chemins de fer
+      red: Rouge
+      ski_area: Domaine skiable
+      slope_direction: Direction de la pente
+      snowboard_parks: Parcs de planche à neige
+      top_lift: Plus haut téléphérique
+    gallery:
+      no_photos: "There are no photographs of this resort yet."
+    meta_descriptions:
+      directory: "Directory for %{resort}, %{country}"
+      gallery: "Photos of %{resort}"
+      piste_map: "%{resort} piste map | Chalet Rentals in %{resort} | Holiday Homes for Rent in %{resort} / Ski Holidays in %{resort}"
+      resort_guide: "Detailed Information for %{resort} Ski Resort, %{country}"
+      show: "%{resort} | Ski Holiday Accommodation | Chalets & Apartments for Rent & Sale"
+      summer_holidays: "Summer Holidays in %{resort}"
+    not_found: 'That resort does not exist.'
+    piste_map:
+      no_piste_maps: "There are no piste maps for this resort yet."
+    resort_information_heading: "%{resort} Resort Information"
+    summer_holidays: 'Grandes Vacances'
+    titles:
+      directory: "Directory for %{resort}, %{country}"
+      gallery: "Photos of %{resort}"
+      how_to_get_there: "%{resort}|Transfers to %{resort}|Airport Transfers to %{resort}|How to get to %{resort}"
+      piste_map: "%{resort} piste map | Chalet Rentals in %{resort} | Holiday Homes for Rent in %{resort} / Ski Holidays in %{resort}"
+      resort_guide: "Detailed Information for %{resort} Ski Resort, %{country}"
+      show: "%{resort} | Ski Holiday Accommodation | Chalets & Apartments for Rent & Sale"
+      summer_holidays: "Summer Holidays in %{resort}"
+  resort_options:
+    new_developments: Nouvelle
+    resort_info: Infos Station
+  roles:
+    administrator: Administrator
+    advertiser: Advertiser
+    estate_agent: Estate agent
+    estate_agents: Estate agents
+    letting_agent: Letting agent
+    letting_agents: Letting agents
+    other_business: Other business
+    property_developer: Property developer
+    property_developers: Property developers
+    property_owner: Property owner
+    property_owners: Property owners
+    sales_pitch:
+      title: '%{role} Information'
+  sale_price: 'Prix de vente'
+  save: 'Enregistrer'
+  sessions_controller:
+    welcome_back: "Welcome back, %{name}"
+  sign_in: Connexion
+  sign_in_invalid: 'Your sign in attempt failed. No account was found with this email address and password.'
+  sign_out: Fermer la Session
+  sign_up: Inscrivez-vous
+  signed_out: 'You are now signed out.'
+  sleeping_capacity: 'Capacité de couchage'
+  sleeps: peut accueillir
+  strapline: 'Slogan'
+  strapline_placeholder: "Summarise the property's key features (e.g., size, location) in under 255 characters."
+  terms: 'Termes et Conditions'
+  time:
+    formats:
+      short: "%d %b %Y"
+  update: Enregistrer
+  users:
+    account_created: 'Your account was successfully created.'
+    account_type: Type de compte
+    advertise_a_property_for_rent:
+      advertise_a_property_for_rent: Advertise a Property for Rent
+      description: "Advertise your property in a resort's property rentals area."
+    advertise_a_property_for_sale:
+      advertise_a_property_for_sale: Advertise a Property for Sale
+      description: "Advertise your property in a resort's property sales area."
+    advertiser_account: "%{name}’s Advertiser Account"
+    billing_details: "Card/Billing Details"
+    billing_street: 'House number and street'
+    business_name: Business name
+    buy_advertising_windows:
+      description: "Windows allow you to swap in and out properties for sale or rent."
+    can_advertise_generally: '<p>You will be able to create banner or directory adverts.</p>'
+    can_advertise_properties_for_rent: '<p>You will be able to advertise properties for rent.</p>'
+    can_advertise_properties_for_sale: '<p>You will be able to advertise properties for sale.</p>'
+    can_advertise_through_windows: '<p>You will be able to buy advertising windows and swap properties in and out of the windows.</p>'
+    choose_a_new_password: Choisir un Nouveau Mot de Passe
+    choose_an_account_type: "Please choose an account type that best matches you or your business."
+    describe_your_business: 'Describe Your Business'
+    describe_yourself: 'Describe Yourself'
+    email_sent: E-mail envoyé
+    enter_your_email_address: "Please enter your email address below"
+    first_advert: Première Annonce
+    forgot_password:
+      forgot_password: Mot de Passe Oublié
+      instructions: "Enter your email address below and press Send for further instructions showing how to reset and change your password."
+      send: Send
+    forgot_password_email_sent:
+      heading: E-mail Envoyé
+      content: "Un email a été envoyé montrant comment réinitialiser votre mot de passe et le changement. S'il vous plaît vérifier votre boîte de réception dans quelques minutes."
+    forgot_your_password: Mot de Passe Oublié
+    i_accept_terms: 'I have read, understood and agree to be bound by the terms and conditions.'
+    manage_airport_transfers:
+      description: 'Set up your list of airport-resort connections and be found in our airport transfer tool'
+      manage_airport_transfers: 'Manage Airport Transfers'
+    my_adverts:
+      description: 'View and update your past and current adverts. See your advert stats.'
+    my_details:
+      description: 'Update your name, contact and billing details.'
+      my_details: My Details
+    my_enquiries:
+      description: 'View enquiries that have been emailed to you through your enquiry forms.'
+    new_directory_advert:
+      description: "Advertise your business within our resort pages."
+      new_directory_advert: New Directory/Banner Advert
+    no_account_yet: "N'avez-vous pas un compte?"
+    password_changed: 'Your password has been changed'
+    receipts:
+      description: 'View and print off receipts for orders that you have placed here.'
+    register_to_advertise: Register to advertise your property or business
+    select_account_type: Sélectionnez le type de compte
+    sign_in_to_access_your_account: Inscrivez-vous pour accéder à votre compte
+    vat_number: 'Tax/VAT registration number'
+    website: Website
+    website_format_tip: 'Please start with either http:// or https://'
+    your_details: Your Details
+    your_position: Your position
+  view: View
+  views:
+    adverts:
+      _table:
+        views: 'Views'
+    layouts:
+      application:
+        resort_nav:
+          for_rent: 'Holiday Rentals'
+    properties:
+      _show_property_heading:
+        new_developments: 'New Developments'
+  weekly_rent_price: 'Prix de location hebdomadaire (minimale)'

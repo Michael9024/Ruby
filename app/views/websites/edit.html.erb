@@ -1,0 +1,86 @@
+<div class="page-header">
+  <h1><%= link_to 'CMS', cms_path %> &rarr; Edit Miscellaneous Website Details</h1>
+</div>
+
+<% if @website.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@website.errors.count, "error") %> prohibited this website's settings from being saved:</h2>
+
+    <ul>
+    <% @website.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @website do |f| %>
+  <%= f.label :home_content %>
+  <%= editor(f, :home_content, :html) %>
+
+  <%= f.label :contact_details %>
+  <%= editor(f, :contact_details, :html) %>
+
+  <%= f.label :terms %>
+  <%= editor(f, :terms, :html) %>
+
+  <%= f.label :privacy_policy %>
+  <%= editor(f, :privacy_policy, :html) %>
+
+  <%= f.label :resources_banner_html %>
+  <%= editor(f, :resources_banner_html, :html) %>
+
+  <%= f.label :sidebar_html %>
+  <%= editor(f, :sidebar_html, :html) %>
+
+  <div class="form-group">
+    <%= f.label :vat_rate, 'VAT rate' %>
+    <%= f.text_field :vat_rate, class: 'form-control' %> %
+  </div>
+
+	<label for="website_skip_payment_true">Skip payment?</label>
+	<label class="radio">
+    <%= f.radio_button :skip_payment, true %>
+    Yes
+  </label>
+	<label class="radio">
+    <%= f.radio_button :skip_payment, false %>
+    No
+	</label>
+
+<h2>WorldPay Settings</h2>
+
+	<label for="website_worldpay_active_true">Active?</label>
+	<label class="radio">
+    <%= f.radio_button :worldpay_active, true %>
+    Yes
+  </label>
+  <label class="radio">
+	  <%= f.radio_button :worldpay_active, false %>
+    No
+  </label>
+
+	<label for="website_worldpay_test_mode">Mode?</label>
+	<label class="radio">
+    <%= f.radio_button :worldpay_test_mode, false %>
+    Production
+  </label>
+	<label class="radio">
+    <%= f.radio_button :worldpay_test_mode, true %>
+    Test
+  </label>
+
+  <div class="form-group">
+    <%= f.label :worldpay_installation_id, 'Installation ID' %>
+    <%= f.text_field :worldpay_installation_id, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :worldpay_payment_response_password, 'Payment response password' %>
+    <%= f.text_field :worldpay_payment_response_password, class: "form-control" %>
+  </div>
+
+<div class="form-actions">
+  <%= f.submit class: 'btn btn-primary' %>
+</div>
+<% end %>

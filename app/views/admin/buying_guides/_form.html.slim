@@ -1,0 +1,17 @@
+- if @buying_guide.errors.any?
+  .alert.alert-error
+    h2
+      => pluralize(@buying_guide.errors.count, 'error')
+      | prohibited this buying guide from being saved:
+
+    ul
+      - @buying_guide.errors.full_messages.each do |msg|
+        li= msg
+
+= bootstrap_form_for [:admin, @buying_guide] do |f|
+  = f.select(:country_id, Country.order(:name).collect {|c| [ c.name, c.id ] }, {prompt: t('countries.select_country')})
+
+  = editor(f, :content, :html)
+
+  .form-actions
+    = f.submit I18n.t('save'), class: 'btn btn-primary'

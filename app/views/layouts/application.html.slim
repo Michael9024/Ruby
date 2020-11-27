@@ -1,0 +1,176 @@
+doctype html
+html lang="#{@lang}"
+  head
+    meta charset="utf-8"
+    title
+      - if !@page_title.blank?
+        = "#{@page_title} - "
+      - elsif content_for? :title
+        = yield :title
+        = ' - '
+      | My Chalet Finder
+    - unless @meta_description.blank?
+      meta name="description" content="#{@meta_description}"
+    - if @meta_keywords.present?
+      meta name="keywords" content="#{@meta_keywords}"
+    meta content="width=device-width, initial-scale=1" name="viewport"
+    meta name="alexaVerifyID" content="0IVBlNZ4wkIe-rLrsQkQNVUS9to"
+    link rel="icon" type="image/x-icon" href="/favicon.ico"
+    script defer="defer" src="/font-awesome/fontawesome-all.js"
+    script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"
+    = stylesheet_link_tag 'application-main', media: 'screen', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application-print', media: 'print', 'data-turbolinks-track': 'reload'
+    /! TradeDoubler site verification 1980597
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application'
+    script src="https://maps.google.com/maps/api/js?key=AIzaSyCdlkrru2ofKjgTYPgyL7Mhgd6--0Ka8ok&sensor=false"
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta name="google-site-verification" content="#{t('google.site_verification')}"
+    javascript:
+      WebFontConfig = {
+        google: { families: [ 'Raleway:500,600:latin-ext' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })();
+      window.smartlook||(function(d) {
+      var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+      var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+      c.charset='utf-8';c.src='//rec.smartlook.com/recorder.js';h.appendChild(c);
+      })(document);
+      smartlook('init', 'e152aad82271039d3f05237f030b9aa81bf0087d');
+  body class="#{body_classes}"
+    - if Rails.env == 'production'
+      javascript:
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', '#{t('google.web_property_id')}', 'auto');
+        ga('send', 'pageview');
+      - if @advertiser_web_property_id.present?
+        javascript:
+          //TODO:
+          //ga(['_setAccount', '#{@advertiser_web_property_id}']);
+          //ga(['_setDomainName', 'mychaletfinder.com']);
+          //ga(['_trackPageview']);
+
+    #wrapper class="#{"#{yield :theme}-theme" if content_for? :theme}"
+      header role="banner"
+        div.header-snippet
+          = raw @page_header_html
+        nav.session.secondary-nav.content-inset
+          ul
+            - if signed_in?
+              - if current_user.has_adverts_in_basket?
+                li
+                  a href="#{basket_path}"= '<i class="fas fa-shopping-cart"></i> '.html_safe + t('basket') +  "<span class=\"count\">#{current_user.adverts_in_basket.count}</span>".html_safe
+              - elsif session[:windows_in_basket]
+                li
+                  a href="#{basket_path}"= '<i class="fas fa-shopping-cart"></i> '.html_safe + t('basket') + '<span class="count">1</span>'.html_safe
+              li
+                = link_to '<i class="fas fa-user"></i> '.html_safe + t('account'), advertise_path
+              li
+                = link_to '<i class="fas fa-sign-out"></i> '.html_safe + t('sign_out'), sign_out_path, data: { 'no-turbolink' => true }
+            - else
+              li
+                = link_to '<i class="fas fa-sign-in"></i> '.html_safe + t('sign_in'), sign_in_path, rel: 'nofollow'
+              li
+                = link_to '<i class="fas fa-user"></i> '.html_safe + t('sign_up'), '/welcome/advertiser', id: 'sign-up'
+            - if admin?
+              li
+                = link_to '<i class="fas fa-edit"></i> '.html_safe + 'CMS', cms_path
+
+        .content-inset.logo-container
+          = image_tag('marker-blue.svg', class: 'logo-marker', alt: '')
+          a.logo href="#{root_path}" title="Home"
+            = image_tag('home-link.svg', alt: alt_attribute('/images/home-link.svg', 'My Chalet Finder Ski Accommodation'))
+      .content-inset.flex-layout.content-space-between.align-end.top-nav-btn-breadcrumb
+        = render 'layouts/breadcrumbs_and_heading'
+        .rentals-sales.flex-3
+          ul
+            - rent_path = @resort ? resort_property_rent_path(@resort) : @region ? region_property_rent_path(@region) : '/'
+            - sale_path = @resort ? resort_property_sale_path(@resort) : @region ? region_property_sale_path(@region) : '/property_sales'
+            li: a.button.action-button href="#{rent_path}" class=('button-disable' if !page_for_rent?) Rentals
+            li: a.button.action-button href="#{sale_path}" class=('button-disable' if !page_for_sale?) Sales
+
+      - if content_for? :search
+          - unless header_image_urls.empty?
+            .search-container-carousel
+              ul#carousel-slides
+                - header_image_urls.each do |url|
+                  li
+                    img src="#{url}" alt="#{alt_attribute(url, 'My Chalet Finder Ski Accommodation')}"
+              .search-fields
+                .content-inset.search
+                  = yield :search
+          - else
+            .search-container
+              .content-inset.search
+                = yield :search
+      - else
+        .divider-bar
+
+      - if !@property
+        = render "layouts/main_menu"
+
+      .page-surround
+        #content.group.wide role="main"
+          = flash_notice
+          = yield
+
+        - if content_for? :advertising
+          #advertising
+            = yield :advertising
+
+      .links
+        = yield :links
+        / = render 'layouts/region_nav' if @region
+        = raw sidebar_html
+
+      .footer-logo-container
+        .logo-container
+          = image_tag('marker-blue.svg', class: 'logo-marker', alt: '')
+          a.logo href="#{root_path}" title="Home"
+            = image_tag('home-link.svg', alt: alt_attribute('/images/home-link.svg', 'My Chalet Finder Ski Accommodation'))
+
+
+
+      .social.secondary-nav
+        ul
+          li
+            a title="Blogger" href="https://mychaletfinder.blogspot.co.uk/"
+              i.fas.fa-rss
+          li
+            a title="Square on Pinterest" href="https://www.pinterest.com/square/"
+              i.fab.fa-pinterest-square
+          li
+            a. title="Facebook" href="https://www.facebook.com/MyChaletFinder" target="_blank"
+              i.fab.fa-facebook
+          li
+            a. title="Linkedin" href="https://www.linkedin.com/MyChaletFinder" target="_blank"
+              i.fab.fa-linkedin-in
+          li
+            a. title="Youtube" href="https://www.youtube.com/MyChaletFinder" target="_blank"
+              i.fab.fa-youtube
+          li
+            a title="Twitter" href="https://twitter.com/#!/MyChaletFinder"
+              i.fab.fa-twitter
+      footer role="contentinfo"
+        .content-inset.footer-block-container
+          - if content_for? :custom_footer
+            = yield :custom_footer
+          - else
+            = render "shared/footer_box"
+        ul.footer-copyright
+          li ©#{Time.now.year} #{COMPANY_NAME}.
+          li All rights reserved.  |
+          li Terms & Conditions  |
+          li Privacy Policy

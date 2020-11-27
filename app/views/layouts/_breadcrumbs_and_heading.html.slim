@@ -1,0 +1,5 @@
+.headings.flex-32
+  - if @heading_a
+    h1= @heading_a
+  - else
+    = yield :breadcrumbs_and_heading

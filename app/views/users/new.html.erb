@@ -1,0 +1,29 @@
+<%= content_for :breadcrumbs_and_heading, breadcrumbs_and_heading({}, t('sign_up')) %>
+
+<%= render partial: 'shared/steps', locals: { step: 1 } %>
+
+<% if @user.role %>
+<p><%= t 'users.account_type' %>: <strong><%= t(@user.role.localisation_key) %></strong> (<%= link_to t('change'), sign_up_path %>)</p>
+<%= raw t('users.can_advertise_through_windows') if @user.advertises_through_windows? %>
+<%= raw t('users.can_advertise_properties_for_rent') if @user.role.advertises_properties_for_rent? %>
+<%= raw t('users.can_advertise_properties_for_sale') if @user.role.advertises_properties_for_sale? %>
+<%= raw t('users.can_advertise_generally') if @user.role.advertises_generally? %>
+<%= render 'form', submit_label: 'sign_up' %>
+<% else %>
+<div class="row">
+  <div class="span6">
+    <div class="well">
+      <legend><%= t('users.choose_an_account_type') %></legend>
+<%= form_for @user do |f| %>
+<input type="hidden" name="stage" value="1">
+<div class="form-group">
+  <%= f.label :role_id, t('users.account_type') %> <%= select("user", "role_id", Role.where(select_on_signup: true).collect {|r| [ t(r.localisation_key), r.id ] }, {prompt: t('users.select_account_type')}, class: 'form-control') %>
+</div>
+<p>
+  <%= f.submit t('continue'), class: 'btn btn-primary' %>
+</p>
+<% end %>
+    </div>
+  </div>
+</div>
+<% end %>
